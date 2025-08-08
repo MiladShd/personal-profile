@@ -27,20 +27,20 @@ export default function BlogClient({ articles: initialArticles }: { articles: Ar
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <nav className="border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold gradient-text">
+            <Link href="/" className="text-xl sm:text-2xl font-bold gradient-text">
               Milad
             </Link>
             
-            <div className="flex items-center gap-6">
-              <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
+            <div className="flex items-center gap-3 sm:gap-6">
+              <Link href="/" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
                 Home
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
+              <Link href="/about" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
                 About
               </Link>
-              <Link href="/blog" className="text-purple-600 dark:text-purple-400 font-medium">
+              <Link href="/blog" className="text-sm sm:text-base text-purple-600 dark:text-purple-400 font-medium">
                 Blog
               </Link>
             </div>
@@ -48,16 +48,16 @@ export default function BlogClient({ articles: initialArticles }: { articles: Ar
         </div>
       </nav>
 
-      <main className="container mx-auto px-6 py-12">
+      <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Blog & Articles
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 px-4 sm:px-0">
             Thoughts, ideas, and insights on technology and development
           </p>
           

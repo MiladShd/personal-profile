@@ -50,15 +50,15 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-6"
+              className="flex items-center gap-3 sm:gap-6"
             >
-              <Link href="/blog" className="text-white/80 hover:text-white transition">
+              <Link href="/blog" className="text-sm sm:text-base text-white/80 hover:text-white transition">
                 Blog
               </Link>
-              <Link href="/about" className="text-white/80 hover:text-white transition">
+              <Link href="/about" className="text-sm sm:text-base text-white/80 hover:text-white transition">
                 About
               </Link>
-              <Link href="/admin" className="text-white/80 hover:text-white transition">
+              <Link href="/admin" className="hidden sm:inline-block text-sm sm:text-base text-white/80 hover:text-white transition">
                 Admin
               </Link>
             </motion.div>
@@ -67,7 +67,7 @@ export default function Home() {
       </nav>
 
       <main className="relative z-10">
-        <section className="container mx-auto px-6 py-20">
+        <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -84,29 +84,29 @@ export default function Home() {
               Welcome to my digital space
             </motion.div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6">
               Hi, I'm{' '}
               <span className="gradient-text">Milad</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/70 mb-4">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/70 mb-4 px-4 sm:px-0">
               Full-Stack Developer • Creative Thinker • Problem Solver
             </p>
             
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-300 text-sm mb-8">
-              <span>⚠️</span>
-              <span>This is a template website - All content is AI-generated for demonstration purposes</span>
+            <div className="mx-4 sm:mx-auto sm:inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-300 text-xs sm:text-sm mb-6 sm:mb-8">
+              <span className="hidden sm:inline">⚠️</span>
+              <span className="text-center">This is a template website - All content is AI-generated for demonstration</span>
             </div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap gap-4 justify-center mb-12"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4 sm:px-0"
             >
               <Link
                 href="/blog"
-                className="group px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-medium hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center gap-2"
+                className="group px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-medium hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 Read My Articles
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -114,7 +114,7 @@ export default function Home() {
               
               <Link
                 href="/about"
-                className="px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300 text-center text-sm sm:text-base"
               >
                 Learn More About Me
               </Link>
@@ -160,13 +160,13 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="container mx-auto px-6 py-20">
+        <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"
           >
             {features.map((feature, index) => (
               <motion.div

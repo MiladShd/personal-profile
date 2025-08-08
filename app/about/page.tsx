@@ -38,20 +38,20 @@ export default function AboutPage() {
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-blue-900/20 opacity-50"></div>
       
       <nav className="relative z-10 border-b border-white/10 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold gradient-text">
+            <Link href="/" className="text-xl sm:text-2xl font-bold gradient-text">
               Milad
             </Link>
             
-            <div className="flex items-center gap-6">
-              <Link href="/" className="text-white/80 hover:text-white transition">
+            <div className="flex items-center gap-3 sm:gap-6">
+              <Link href="/" className="text-sm sm:text-base text-white/80 hover:text-white transition">
                 Home
               </Link>
-              <Link href="/blog" className="text-white/80 hover:text-white transition">
+              <Link href="/blog" className="text-sm sm:text-base text-white/80 hover:text-white transition">
                 Blog
               </Link>
-              <Link href="/about" className="text-white font-medium">
+              <Link href="/about" className="text-sm sm:text-base text-white font-medium">
                 About
               </Link>
             </div>
@@ -59,21 +59,21 @@ export default function AboutPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 container mx-auto px-6 py-12">
+      <main className="relative z-10 container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-6xl mx-auto"
         >
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               About Me
             </h1>
-            <p className="text-xl text-white/70 mb-4">
+            <p className="text-lg sm:text-xl text-white/70 mb-4 px-4 sm:px-0">
               Passionate about creating exceptional digital experiences
             </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-300 text-sm">
-              <span>⚠️</span>
+            <div className="mx-4 sm:mx-auto sm:inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-300 text-xs sm:text-sm">
+              <span className="hidden sm:inline">⚠️</span>
               <span>Template content - AI-generated for demonstration</span>
             </div>
           </div>
