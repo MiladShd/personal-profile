@@ -1,13 +1,15 @@
 ---
-title: Welcome to My Blog
+title: Welcome to My Blog (Template)
 slug: welcome-to-my-blog
-excerpt: This is my first blog post where I share my thoughts on web development and technology.
+excerpt: This is an example blog post with AI-generated content for demonstration purposes.
 date: 2024-01-15T00:00:00.000Z
 published: true
 views: 42
 ---
 
 # Welcome to My Blog
+
+**⚠️ Note: This is a template blog post with AI-generated content for demonstration purposes.**
 
 Welcome to my personal blog! I'm excited to share my journey, insights, and experiences in the world of web development.
 

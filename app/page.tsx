@@ -89,9 +89,14 @@ export default function Home() {
               <span className="gradient-text">Milad</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/70 mb-12">
+            <p className="text-xl md:text-2xl text-white/70 mb-4">
               Full-Stack Developer • Creative Thinker • Problem Solver
             </p>
+            
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-300 text-sm mb-8">
+              <span>⚠️</span>
+              <span>This is a template website - All content is AI-generated for demonstration purposes</span>
+            </div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}

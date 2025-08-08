@@ -69,9 +69,13 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               About Me
             </h1>
-            <p className="text-xl text-white/70">
+            <p className="text-xl text-white/70 mb-4">
               Passionate about creating exceptional digital experiences
             </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-300 text-sm">
+              <span>⚠️</span>
+              <span>Template content - AI-generated for demonstration</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
