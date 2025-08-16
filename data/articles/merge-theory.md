@@ -13,11 +13,11 @@ subtitle: Set-Valued Inverses, Consensus Gains, and Uncertainty
 
 # Merge Theory for LLMs
 
-## The Challenge: Why Can't We Just Average AI Models?
+## The Challenge: Why not just average AI models?
 
-Imagine you have three specialized doctors: a cardiologist, a neurologist, and an infectious disease specialist. A patient comes in with a fever and fatigue. Each doctor might diagnose differently based on their expertise, but multiple underlying conditions could cause these same symptoms. This is the **many-to-one problem** - and it's exactly what happens when we try to merge AI models.
+In many real problems, multiple distinct inputs can produce the same output (think several diagnoses explaining the same symptoms). When that many-to-one structure shows up, the assumptions behind common merging tricks (including simple weight averaging) break, and you can get systematic errors. 
 
-Traditional approaches to combining models (like averaging their parameters) fail catastrophically in these scenarios. My research introduces **Merge Theory** - a mathematical framework that solves this fundamental problem.
+Traditional approaches like weight-space averaging (model soups, Fisher-weighted averaging) and task arithmetic work well in some cases, but fail when non-injective mappings dominate. My research introduces **Merge Theory**—a set-valued framework that keeps all plausible explanations and then uses consensus + uncertainty to decide how to act.
 
 ## The Core Insight: Embracing Multiple Solutions
 
@@ -27,8 +27,13 @@ Instead of forcing models to agree on a single answer, Merge Theory recognizes t
 Rather than outputting a single answer, our merged model returns a calibrated set of possibilities:
 
 ```python
-# Traditional approach (problematic)
-def merge_traditional(models, input):
+# Traditional approaches (can be problematic with many-to-one mappings)
+def merge_weights(models):
+    # Weight averaging (model soups, Fisher-weighted, etc.)
+    return average_parameters([m.weights for m in models])
+
+def merge_probabilities(models, input):
+    # Simple probability averaging
     return average([m.predict(input) for m in models])
 
 # Merge Theory approach
@@ -51,7 +56,7 @@ Merge Degree Formula: m_f(y) = |f^(-1)(y)|
 Where f^(-1)(y) is the set of all inputs that produce output y
 ```
 
-This gives us a principled way to quantify uncertainty: when many causes lead to the same effect, confidence in any single cause must decrease proportionally.
+More precisely, under exchangeable priors, the maximum posterior confidence equals exactly **1/m_f(y)** - confidence shrinks as 1/merge degree. This gives us a principled bound: when many causes lead to the same effect, confidence in any single cause must decrease proportionally.
 
 ## The Mathematics: Five Proven Guarantees
 
@@ -67,7 +72,7 @@ When constrained to k predictions, choosing the k highest probabilities minimize
 Maximum confidence = 1/merge_degree under exchangeable priors.
 
 ### Theorem 4: Consensus Gains
-With independent chains and accuracy > 50%, error decreases exponentially with agreement.
+With independent reasoning chains and accuracy p > 1/2 (above chance), error decreases exponentially with agreement at rate 2(p - 1/2)².
 
 ### Theorem 5: Proper Scoring & Coverage
 Posterior distributions uniquely minimize all proper scoring rules, with minimal sets for target coverage.
@@ -131,7 +136,7 @@ def backward_spread(observation, model, k=None, threshold=None):
 Multiple diseases presenting identical symptoms - the framework provides calibrated differential diagnoses with confidence bounds.
 
 ### Multi-hop Reasoning
-When multiple reasoning paths converge to the same conclusion, consensus voting with exponential error reduction.
+When multiple independent reasoning paths converge to the same conclusion, consensus voting achieves exponential error reduction (under independence and accuracy > 1/2).
 
 ### Information Retrieval
 Handling near-duplicates and paraphrases while maintaining diversity in search results.
@@ -140,9 +145,9 @@ Handling near-duplicates and paraphrases while maintaining diversity in search r
 
 1. **Non-Convexity Recognition**: Traditional weight averaging assumes convex solution spaces. Set-valued approaches handle disconnected solution regions.
 
-2. **Consensus as Regularization**: Agreement between models acts as implicit regularization with exponential error reduction (rate: 2(p-1/2)²).
+2. **Consensus as Regularization**: With independent models and accuracy above chance (p > 1/2), agreement between models acts as implicit regularization with exponential error reduction at rate 2(p-1/2)².
 
-3. **Principled Uncertainty**: Merge degree provides calibrated uncertainty inversely proportional to preimage cardinality.
+3. **Principled Uncertainty**: Merge degree provides calibrated uncertainty—maximum posterior confidence equals exactly 1/m_f(y) under exchangeable priors.
 
 ## Practical Impact
 
@@ -181,7 +186,7 @@ Plot risk-coverage curves on validation data to select optimal λ for target cov
 
 ## Conclusion
 
-Merge Theory provides the mathematical foundations for principled model combination, moving beyond naive averaging to handle the complex realities of non-injective mappings. By embracing set-valued predictions and leveraging consensus gains, we can build more robust and reliable AI systems.
+Merge Theory provides the mathematical foundations for principled model combination, moving beyond ad-hoc merging and simple averaging approaches to handle the complex realities of non-injective mappings. By embracing set-valued predictions and leveraging consensus gains, we can build more robust and reliable AI systems.
 
 The framework bridges formal guarantees with practical engineering, enabling reliable combination of diverse model capabilities as specialized LLMs proliferate.
 
