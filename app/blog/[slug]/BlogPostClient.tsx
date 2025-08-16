@@ -6,6 +6,8 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin, Download, FileText, BookOpen, User } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface Article {
   id: string
@@ -237,7 +239,35 @@ export default function BlogPostClient({ article }: { article: Article }) {
               "prose prose-lg dark:prose-invert max-w-none academic-prose" : 
               "prose prose-lg dark:prose-invert max-w-none"
             }>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  code({node, inline, className, children, ...props}: any) {
+                    const match = /language-(\w+)/.exec(className || '')
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        style={vscDarkPlus}
+                        language={match[1]}
+                        PreTag="div"
+                        customStyle={{
+                          borderRadius: '0.5rem',
+                          fontSize: '0.875rem',
+                          padding: '1.5rem',
+                          margin: '1.5rem 0',
+                          backgroundColor: '#1e1e1e',
+                        }}
+                        {...props}
+                      >
+                        {String(children).replace(/\n$/, '')}
+                      </SyntaxHighlighter>
+                    ) : (
+                      <code className="bg-gray-800 text-pink-400 px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+                        {children}
+                      </code>
+                    )
+                  }
+                }}
+              >
                 {article.content}
               </ReactMarkdown>
             </div>
