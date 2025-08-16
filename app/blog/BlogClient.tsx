@@ -30,15 +30,12 @@ export default function BlogClient({ articles: initialArticles }: { articles: Ar
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-xl sm:text-2xl font-bold gradient-text">
-              Milad
+              Milad Shaddelan 🐈
             </Link>
             
             <div className="flex items-center gap-3 sm:gap-6">
               <Link href="/" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
                 Home
-              </Link>
-              <Link href="/about" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
-                About
               </Link>
               <Link href="/blog" className="text-sm sm:text-base text-purple-600 dark:text-purple-400 font-medium">
                 Blog

@@ -55,12 +55,6 @@ export default function Home() {
               <Link href="/blog" className="text-sm sm:text-base text-white/80 hover:text-white transition">
                 Blog
               </Link>
-              <Link href="/about" className="text-sm sm:text-base text-white/80 hover:text-white transition">
-                About
-              </Link>
-              <Link href="/admin" className="hidden sm:inline-block text-sm sm:text-base text-white/80 hover:text-white transition">
-                Admin
-              </Link>
             </motion.div>
           </div>
         </div>
@@ -102,21 +96,14 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4 sm:px-0"
+              className="flex justify-center mb-8 sm:mb-12 px-4 sm:px-0"
             >
               <Link
                 href="/blog"
                 className="group px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-medium hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                Read My Articles
+                Read My Research
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <Link
-                href="/about"
-                className="px-6 sm:px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300 text-center text-sm sm:text-base"
-              >
-                Learn More About Me
               </Link>
             </motion.div>
             
