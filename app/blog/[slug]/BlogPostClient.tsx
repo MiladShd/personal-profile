@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin, Download, FileText, BookOpen, User } from 'lucide-react'
 
 interface Article {
   id: string
@@ -16,6 +16,9 @@ interface Article {
   published: boolean
   views: number
   readTime?: string
+  author?: string
+  tags?: string[]
+  image?: string
 }
 
 export default function BlogPostClient({ article }: { article: Article }) {
@@ -30,13 +33,15 @@ export default function BlogPostClient({ article }: { article: Article }) {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank')
   }
 
+  const isMergeTheoryPost = article.slug === 'merge-theory-llms'
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      <nav className="border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-10">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-xl sm:text-2xl font-bold gradient-text">
-              Milad
+            <Link href="/" className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">
+              Milad Shaddelan 🐈
             </Link>
             
             <div className="flex items-center gap-3 sm:gap-6">
@@ -46,7 +51,7 @@ export default function BlogPostClient({ article }: { article: Article }) {
               <Link href="/about" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
                 About
               </Link>
-              <Link href="/blog" className="text-sm sm:text-base text-purple-600 dark:text-purple-400 font-medium">
+              <Link href="/blog" className="text-sm sm:text-base text-blue-600 dark:text-blue-400 font-medium">
                 Blog
               </Link>
             </div>
@@ -58,62 +63,137 @@ export default function BlogPostClient({ article }: { article: Article }) {
         <motion.article
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto"
+          className={isMergeTheoryPost ? "max-w-6xl mx-auto" : "max-w-4xl mx-auto"}
         >
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white mb-6 sm:mb-8 transition"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to blog
-          </Link>
-
-          <header className="mb-6 sm:mb-8">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              {article.title}
-            </h1>
+          {/* Back button and Download button row */}
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to blog
+            </Link>
             
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {new Date(article.date).toLocaleDateString('en-US', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric'
-                  })}
-                </span>
-                {article.readTime && (
+            {isMergeTheoryPost && (
+              <a
+                href="/merge-theory-llms.pdf"
+                download="Shaddelan-2025-Merge-Theory-LLMs.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-md"
+              >
+                <Download className="w-5 h-5" />
+                Download PDF
+              </a>
+            )}
+          </div>
+
+          {/* Academic Paper Header for Merge Theory */}
+          {isMergeTheoryPost ? (
+            <header className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-200 dark:border-gray-700">
+              <div className="text-center mb-6">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                  {article.title}
+                </h1>
+                
+                <div className="text-lg text-gray-700 dark:text-gray-300 mb-2">
+                  <span className="font-semibold">Milad Shaddelan</span>
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  milad.shaddelan@gmail.com
+                </div>
+                
+                <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {article.readTime}
+                    <Calendar className="w-4 h-4" />
+                    August 15, 2025
                   </span>
-                )}
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <BookOpen className="w-4 h-4" />
+                    DOI: 10.5281/zenodo.16884687
+                  </span>
+                </div>
               </div>
               
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={shareOnTwitter}
-                  className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
-                  title="Share on Twitter"
-                >
-                  <Twitter className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={shareOnLinkedIn}
-                  className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
-                  title="Share on LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </button>
+              {/* Abstract Section */}
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 mt-6">
+                <h2 className="text-sm font-bold uppercase text-gray-700 dark:text-gray-300 mb-3">Abstract</h2>
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
+                  {article.excerpt}
+                </p>
               </div>
-            </div>
-          </header>
+              
+              {/* Keywords */}
+              {article.tags && (
+                <div className="mt-6">
+                  <span className="text-sm font-bold text-gray-700 dark:text-gray-300 mr-2">Keywords:</span>
+                  <div className="inline-flex flex-wrap gap-2 mt-2">
+                    {article.tags.map((tag, index) => (
+                      <span key={index} className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-xs">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </header>
+          ) : (
+            <header className="mb-6 sm:mb-8">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                {article.title}
+              </h1>
+              
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {new Date(article.date).toLocaleDateString('en-US', {
+                      month: 'long',
+                      day: 'numeric',
+                      year: 'numeric'
+                    })}
+                  </span>
+                  {article.readTime && (
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {article.readTime}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={shareOnTwitter}
+                    className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
+                    title="Share on Twitter"
+                  >
+                    <Twitter className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={shareOnLinkedIn}
+                    className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
+                    title="Share on LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </header>
+          )}
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {article.content}
-            </ReactMarkdown>
+          {/* Content Area with Academic Styling for Merge Theory */}
+          <div className={isMergeTheoryPost ? 
+            "bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-200 dark:border-gray-700" : 
+            ""
+          }>
+            <div className={isMergeTheoryPost ? 
+              "prose prose-lg dark:prose-invert max-w-none academic-prose" : 
+              "prose prose-lg dark:prose-invert max-w-none"
+            }>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {article.content}
+              </ReactMarkdown>
+            </div>
           </div>
 
           <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">

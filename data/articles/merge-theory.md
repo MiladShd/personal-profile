@@ -206,10 +206,11 @@ If you use this work in your research, please cite:
 ## Resources
 
 - **Paper (Official Version)**: [Zenodo DOI: 10.5281/zenodo.16884687](https://doi.org/10.5281/zenodo.16884687)
-- **Code Implementation**: [GitHub Repository](https://github.com/miladshd/merge-theory)
+- **Full PDF**: [Download Paper](/merge-theory-llms.pdf)
+- **Code Implementation**: [GitHub Repository](https://github.com/miladshd/merge-theory) *(Currently private - will be made public after testing and experiments are complete)*
 - **Contact**: milad.shaddelan@gmail.com
 
-*Note: The Zenodo DOI represents the official archived version of this paper. Please use it for citations.*
+*Note: The Zenodo DOI represents the official archived version of this paper. Please use it for citations. The code repository is temporarily private while experiments and testing are being finalized.*
 
 ---
 
