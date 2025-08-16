@@ -212,7 +212,7 @@ If you use this work in your research, please cite:
 ## Resources
 
 - **Paper (Official Version)**: [Zenodo DOI: 10.5281/zenodo.16884687](https://doi.org/10.5281/zenodo.16884687)
-- **Full PDF**: [Download Paper](/merge-theory-llms.pdf)
+- **Full PDF**: [Download Paper](/personal-profile/merge-theory-llms.pdf)
 - **Code Implementation**: [GitHub Repository](https://github.com/miladshd/merge-theory) *(Currently private - will be made public after testing and experiments are complete)*
 - **Contact**: milad.shaddelan@gmail.com
 
