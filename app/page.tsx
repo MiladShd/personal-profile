@@ -182,8 +182,11 @@ export default function Home() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-white mb-2">
-                      Merge Theory for LLMs: Set-Valued Inverses, Consensus Gains, and Uncertainty
+                      Merge Theory for LLMs
                     </h3>
+                    <p className="text-lg text-white/80 italic mb-2">
+                      Set-Valued Inverses, Consensus Gains, and Uncertainty
+                    </p>
                     <p className="text-white/70 mb-4">
                       A groundbreaking framework for combining multiple AI models using set-valued optimization. 
                       This research addresses the fundamental challenges of non-injective mappings in model merging, 

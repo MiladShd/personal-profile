@@ -1,5 +1,5 @@
 ---
-title: Merge Theory for LLMs - Solving the Model Combination Puzzle
+title: Merge Theory for LLMs
 slug: merge-theory-llms
 excerpt: A groundbreaking framework for combining multiple AI models using set-valued optimization, addressing the fundamental challenges of non-injective mappings in model merging.
 date: 2025-08-15T00:00:00.000Z
@@ -8,9 +8,10 @@ views: 0
 image: /images/merge-theory-diagram.svg
 tags: ["AI Research", "Machine Learning", "LLMs", "Optimization Theory"]
 author: Milad Shaddelan
+subtitle: Set-Valued Inverses, Consensus Gains, and Uncertainty
 ---
 
-# Merge Theory for LLMs: Set-Valued Inverses, Consensus Gains, and Uncertainty
+# Merge Theory for LLMs
 
 ## The Challenge: Why Can't We Just Average AI Models?
 

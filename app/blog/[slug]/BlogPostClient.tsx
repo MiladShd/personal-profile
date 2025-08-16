@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin, Download, FileText, BookOpen, User } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 interface Article {
   id: string
@@ -19,9 +20,21 @@ interface Article {
   author?: string
   tags?: string[]
   image?: string
+  subtitle?: string
 }
 
 export default function BlogPostClient({ article }: { article: Article }) {
+  const [isScrolled, setIsScrolled] = useState(false)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const shareOnTwitter = () => {
     const url = window.location.href
     const text = `Check out this article: ${article.title}`
@@ -37,7 +50,36 @@ export default function BlogPostClient({ article }: { article: Article }) {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-10">
+      {/* Sticky header with minimize on scroll for Merge Theory */}
+      {isMergeTheoryPost && (
+        <div className={`fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm z-50 transition-all duration-300 ${
+          isScrolled ? 'py-2' : 'py-0 translate-y-[-100%]'
+        }`}>
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <Link href="/blog" className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                  <ArrowLeft className="w-5 h-5" />
+                </Link>
+                <div>
+                  <h2 className="text-lg font-bold text-gray-900 dark:text-white">Merge Theory for LLMs</h2>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">Milad Shaddelan • DOI: 10.5281/zenodo.16884687</p>
+                </div>
+              </div>
+              <a
+                href="/merge-theory-llms.pdf"
+                download="Shaddelan-2025-Merge-Theory-LLMs.pdf"
+                className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
+              >
+                <Download className="w-4 h-4" />
+                <span className="hidden sm:inline">Download PDF</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">
@@ -89,16 +131,21 @@ export default function BlogPostClient({ article }: { article: Article }) {
 
           {/* Academic Paper Header for Merge Theory */}
           {isMergeTheoryPost ? (
-            <header className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-200 dark:border-gray-700">
-              <div className="text-center mb-6">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+            <header className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
+              <div className="text-center mb-4">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">
                   {article.title}
                 </h1>
+                {article.subtitle && (
+                  <p className="text-lg text-gray-600 dark:text-gray-400 italic mb-4">
+                    {article.subtitle}
+                  </p>
+                )}
                 
-                <div className="text-lg text-gray-700 dark:text-gray-300 mb-2">
+                <div className="text-base text-gray-700 dark:text-gray-300 mb-1">
                   <span className="font-semibold">Milad Shaddelan</span>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   milad.shaddelan@gmail.com
                 </div>
                 
@@ -116,8 +163,8 @@ export default function BlogPostClient({ article }: { article: Article }) {
               </div>
               
               {/* Abstract Section */}
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 mt-6">
-                <h2 className="text-sm font-bold uppercase text-gray-700 dark:text-gray-300 mb-3">Abstract</h2>
+              <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 mt-4">
+                <h2 className="text-sm font-bold uppercase text-gray-700 dark:text-gray-300 mb-2">Abstract</h2>
                 <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
                   {article.excerpt}
                 </p>
