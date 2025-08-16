@@ -95,6 +95,9 @@ export default function BlogPostClient({ article }: { article: Article }) {
               <Link href="/blog" className="text-sm sm:text-base text-blue-600 dark:text-blue-400 font-medium">
                 Blog
               </Link>
+              <Link href="/bookshelf" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition">
+                Bookshelf
+              </Link>
             </div>
           </div>
         </div>
