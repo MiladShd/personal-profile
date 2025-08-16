@@ -184,11 +184,32 @@ Merge Theory provides the mathematical foundations for principled model combinat
 
 The framework bridges formal guarantees with practical engineering, enabling reliable combination of diverse model capabilities as specialized LLMs proliferate.
 
+## How to Cite
+
+If you use this work in your research, please cite:
+
+**Shaddelan, M. (2025). Merge Theory for LLMs: Set-Valued Inverses, Consensus Gains, and Uncertainty. Zenodo. https://doi.org/10.5281/zenodo.16884687**
+
+### BibTeX
+```bibtex
+@misc{shaddelan2025merge,
+  author       = {Shaddelan, Milad},
+  title        = {Merge Theory for LLMs: Set-Valued Inverses, 
+                  Consensus Gains, and Uncertainty},
+  year         = {2025},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.16884687},
+  url          = {https://doi.org/10.5281/zenodo.16884687}
+}
+```
+
 ## Resources
 
-- **Paper**: [Full PDF Available](https://github.com/miladshd/merge-theory)
-- **Code**: [GitHub Implementation](https://github.com/miladshd/merge-theory)
+- **Paper (Official Version)**: [Zenodo DOI: 10.5281/zenodo.16884687](https://doi.org/10.5281/zenodo.16884687)
+- **Code Implementation**: [GitHub Repository](https://github.com/miladshd/merge-theory)
 - **Contact**: milad.shaddelan@gmail.com
+
+*Note: The Zenodo DOI represents the official archived version of this paper. Please use it for citations.*
 
 ---
 
