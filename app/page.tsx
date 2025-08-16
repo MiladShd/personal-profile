@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Github, Linkedin, Mail, Twitter, ArrowRight, Sparkles, Code2, Palette, Rocket } from 'lucide-react'
+import { Github, Linkedin, Twitter, ArrowRight, Sparkles, Code2, Palette, Rocket } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
@@ -114,7 +114,7 @@ export default function Home() {
               className="flex gap-6 justify-center"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/MiladShd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
@@ -130,18 +130,12 @@ export default function Home() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/MiladShaddelan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
               >
                 <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:hello@example.com"
-                className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300"
-              >
-                <Mail className="w-5 h-5" />
               </a>
             </motion.div>
           </motion.div>

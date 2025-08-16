@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm'
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Linkedin, Download, FileText, BookOpen, User } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface Article {
   id: string
@@ -243,7 +243,7 @@ export default function BlogPostClient({ article }: { article: Article }) {
                     const match = /language-(\w+)/.exec(className || '')
                     return !inline && match ? (
                       <SyntaxHighlighter
-                        style={vscDarkPlus}
+                        style={oneDark}
                         language={match[1]}
                         PreTag="div"
                         customStyle={{
@@ -251,7 +251,15 @@ export default function BlogPostClient({ article }: { article: Article }) {
                           fontSize: '0.875rem',
                           padding: '1.5rem',
                           margin: '1.5rem 0',
-                          backgroundColor: '#1e1e1e',
+                          backgroundColor: '#1e1e1e !important',
+                          border: '1px solid #333',
+                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                        }}
+                        codeTagProps={{
+                          style: {
+                            backgroundColor: '#1e1e1e',
+                            color: '#d4d4d4',
+                          }
                         }}
                         {...props}
                       >

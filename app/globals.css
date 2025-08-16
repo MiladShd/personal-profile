@@ -115,13 +115,27 @@
   @apply text-pink-600 dark:text-pink-400 text-sm font-mono;
 }
 
+/* Remove pre styling to let syntax highlighter handle it */
 .academic-prose pre {
-  @apply rounded-lg overflow-hidden mb-6;
   margin: 1.5rem 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .academic-prose pre code {
-  @apply text-gray-100 bg-transparent p-0;
+  background: transparent !important;
+  padding: 0 !important;
+  color: inherit !important;
+}
+
+/* Ensure dark background for all code blocks */
+.prose pre {
+  background-color: #1e1e1e !important;
+}
+
+.prose code {
+  color: #d4d4d4 !important;
 }
 
 .academic-prose blockquote {
