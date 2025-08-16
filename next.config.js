@@ -4,8 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/personal-profile',
-  assetPrefix: '/personal-profile',
+  // Remove basePath and assetPrefix for Cloudflare Pages
+  // basePath: '/personal-profile',
+  // assetPrefix: '/personal-profile',
 }
 
 module.exports = nextConfig
