@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, ArrowRight, Sparkles, Code2, Palette, Rocket } from 'lucide-react'
+import { Github, Linkedin, Twitter, ArrowRight, Sparkles } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
@@ -12,23 +12,6 @@ export default function Home() {
     setMounted(true)
   }, [])
 
-  const features = [
-    {
-      icon: <Code2 className="w-6 h-6" />,
-      title: "Technical Excellence",
-      description: "Clean code, modern stack, best practices"
-    },
-    {
-      icon: <Palette className="w-6 h-6" />,
-      title: "Beautiful Design",
-      description: "Stunning visuals with smooth animations"
-    },
-    {
-      icon: <Rocket className="w-6 h-6" />,
-      title: "High Performance",
-      description: "Optimized for speed and user experience"
-    }
-  ]
 
   if (!mounted) return null
 
@@ -199,32 +182,6 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="p-3 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg inline-block mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-white/60">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
       </main>
     </div>
   )
